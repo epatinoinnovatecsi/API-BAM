@@ -46,7 +46,8 @@ const login = catchError(async(req, res) => {
     const user = await User.findOne({ where: { email }});
     if(!user) return res.status(401).json({ error: "Invalid credentials"})
     if (password != user.password) return res.status(401).json({ error: "Invalid credentials"})
-    return res.json(user)
+    const reqTime = new Date(Date.now());
+    return res.json({user, reqTime});
 })
 
 module.exports = {
