@@ -14,7 +14,6 @@ app.use(helmet({
     crossOriginResourcePolicy: false,
 }));
 app.use(cors());
-
 app.use(router);
 app.get('/', (req, res) => {
     return res.send("Welcome to express!");

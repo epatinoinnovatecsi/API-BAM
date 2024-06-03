@@ -3,10 +3,29 @@ const File = require('../models/File')
 const catchError = require("../utils/catchError")
 const path = require("path")
 const fs = require("fs")
+const upload = require('../utils/multer')
+
+const p = path.join(path.dirname(require.main.filename), 'programs', 'BasicOTADrive.ino.bin');
 
 const getAll = catchError(async (req, res) => {
     const result = await File.findAll()
     return res.json(result)
+})
+
+const getOne = catchError(async (req, res) => {
+    console.log("Executing get one");
+    // const id = req.params.id;
+    // const result = await File.findByPk(id);
+    // console.log(result.url);
+    console.log(p);
+    fs.readFile(p, (err, fileData) => {
+        if(err){
+            console.log("Error reading file");
+            return res.sendStatus(404);
+        }
+        return res.send(fileData);
+    })
+
 })
 
 const create = catchError(async (req, res) => {
@@ -37,6 +56,7 @@ const remove = catchError(async (req, res) => {
 })
 
 module.exports = {
+    getOne,
     getAll,
     create,
     remove
