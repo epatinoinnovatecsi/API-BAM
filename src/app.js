@@ -4,6 +4,7 @@ const cors = require('cors');
 const router = require('./routes');
 const errorHandler = require('./utils/errorHandler');
 const logger = require('./utils/logger');
+const removeHeaders = require('./utils/removeHeaders');
 require('dotenv').config();
 
 // Esta es nuestra aplicación
@@ -16,6 +17,7 @@ app.use(helmet({
 }));
 app.use(cors());
 app.use(logger)
+app.use(removeHeaders);
 app.use(router);
 app.get('/', (req, res) => {
     return res.send("Welcome to express!");
