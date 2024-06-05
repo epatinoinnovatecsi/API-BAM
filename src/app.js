@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const router = require('./routes');
 const errorHandler = require('./utils/errorHandler');
+const logger = require('./utils/logger');
 require('dotenv').config();
 
 // Esta es nuestra aplicación
@@ -14,6 +15,7 @@ app.use(helmet({
     crossOriginResourcePolicy: false,
 }));
 app.use(cors());
+app.use(logger)
 app.use(router);
 app.get('/', (req, res) => {
     return res.send("Welcome to express!");

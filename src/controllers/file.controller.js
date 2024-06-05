@@ -13,11 +13,11 @@ const getAll = catchError(async (req, res) => {
 })
 
 const getOne = catchError(async (req, res) => {
-    console.log("Executing get one");
+    // console.log("Executing get one");
     // const id = req.params.id;
     // const result = await File.findByPk(id);
     // console.log(result.url);
-    console.log(p);
+    // console.log(p);
     fs.readFile(p, (err, fileData) => {
         if(err){
             console.log("Error reading file");
