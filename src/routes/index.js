@@ -7,7 +7,7 @@ const router = express.Router();
 // colocar las rutas aquí
 router.use('/users', routerUser);
 router.use('/activities', routerActivity);
-router.use('/files', routerFile);
+router.use('/update?', routerFile);
 
 
 module.exports = router;

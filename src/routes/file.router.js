@@ -6,6 +6,7 @@ const { getAll, create, remove, getOne } = require('../controllers/file.controll
 const routerFile = express.Router();
 
 routerFile.route('/')
+    .head(getOne)
     .get(getAll)
     .post(upload.single('file'), create)
 
