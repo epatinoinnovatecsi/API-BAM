@@ -24,6 +24,7 @@ const getOne = catchError(async (req, res) => {
             const toByte = parseInt(dataRange.substring(dataRange.indexOf("-")+1));
             const partialContent = Buffer.alloc((toByte -fromByte) + 1);
             fileData.copy(partialContent, 0, fromByte, toByte + 1);
+            res.header('Content-Range', `bytes ${fromByte}-${toByte}/${fileData.length}`);
             return res.status(206).send(partialContent);
         }
         // res.removeHeader("CF-Ray");
