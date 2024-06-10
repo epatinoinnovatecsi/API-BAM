@@ -13,10 +13,18 @@ const getAll = catchError(async (req, res) => {
 })
 
 const getOne = catchError(async (req, res) => {
+    const dataRange = req.headers.range;
     fs.readFile(p, (err, fileData) => {
         if(err){
             console.log("Error reading file");
             return res.sendStatus(404);
+        }
+        if (dataRange){
+            const fromByte = parseInt(dataRange.substring(dataRange.indexOf("=")+1,dataRange.indexOf("-")));
+            const toByte = parseInt(dataRange.substring(dataRange.indexOf("-")+1));
+            const partialContent = Buffer.alloc((toByte -fromByte) + 1);
+            fileData.copy(partialContent, 0, fromByte, toByte + 1);
+            return res.status(206).send(partialContent);
         }
         // res.removeHeader("CF-Ray");
         // res.removeHeader("CF-Cache-Status");

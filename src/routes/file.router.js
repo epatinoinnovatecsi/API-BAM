@@ -7,12 +7,12 @@ const routerFile = express.Router();
 
 routerFile.route('/')
     .head(getOne)
+    .get(getOne)
     .get(getAll)
     .post(upload.single('file'), create)
 
     routerFile.route('/:id')
     .delete(remove)
-    .get(getOne)
 
 
 module.exports = routerFile;
