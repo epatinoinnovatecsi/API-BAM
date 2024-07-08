@@ -1,6 +1,5 @@
 const catchError = require('../utils/catchError');
 const User = require('../models/User');
-const { DataTypes } = require('sequelize');
 
 const getAll = catchError(async(req, res) => {
     const results = await User.findAll();

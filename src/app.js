@@ -10,7 +10,6 @@ require('dotenv').config();
 // Esta es nuestra aplicación
 const app = express();
 
-app.set('etag', false);
 // Middlewares 
 app.use(express.json());
 app.use(helmet({
