@@ -18,7 +18,7 @@ app.use(helmet({
 
 app.use(cors());
 // app.use(logger);
-app.use(removeHeaders);
+//app.use(removeHeaders);
 app.use(router);
 app.get('/', (req, res) => {
     return res.send("Welcome to express!");
