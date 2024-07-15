@@ -42,6 +42,8 @@ const update = catchError(async(req, res) => {
 
 const login = catchError(async(req, res) => {
     const {password, email} = req.body;
+    console.log("Request login with:")
+    console.log(password, email);
     const user = await User.findOne({ where: { email }});
     if(!user) return res.status(401).json({ error: "Invalid credentials"})
     if (password != user.password) return res.status(401).json({ error: "Invalid credentials"})
