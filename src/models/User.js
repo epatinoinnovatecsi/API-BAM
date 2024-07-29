@@ -20,7 +20,7 @@ const User = sequelize.define('user', {
         allowNull: false
     },
     isBlock: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
     },
