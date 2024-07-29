@@ -20,9 +20,9 @@ const User = sequelize.define('user', {
         allowNull: false
     },
     isBlock: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.NUMBER,
         allowNull: false,
-        defaultValue: true,
+        defaultValue: 0,
     },
     timeAllowed: {
         type: DataTypes.DATE,
